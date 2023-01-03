@@ -8,19 +8,20 @@ O minikube é uma "VMzinha" que simula um cluster Kubernetes, sem inúmeros work
 - **minikube delete** – Deleta a VM criada.
 - **minikube dashboard** – Abre uma aba no browser com um dashboard do Kubernetes.
 
+# Listando recursos com o kubectl get
+
+```
+kubectl get <RECURSO>
+```
+
 # Criando deployments com o kubectl create no modo imperativo
 
 ```
 kubectl create deployment '<DEPLOYMENT_NAME>' --image='<IMAGE>'
 ```
 
-# Exemplo de criação de deployment no modo imperativo
-
-```
-kubectl create deployment 'my-deployment' --image='azold6/jenkins-with-spring:jenkins-spring-pipeline-53'
-```
-
 # Deletando deployments com o kubectl delete
+
 
 ```
 kubectl delete deployment '<DEPLOYMENT_NAME>'
