@@ -20,3 +20,9 @@ kubectl create deployment '<DEPLOYMENT_NAME>' --image='<IMAGE>'
 kubectl create deployment 'my-deployment' --image='azold6/jenkins-with-spring:jenkins-spring-pipeline-53'
 ```
 
+# Deletando deployments com o kubectl delete
+
+```
+kubectl delete deployment '<DEPLOYMENT_NAME>'
+```
+
