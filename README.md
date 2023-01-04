@@ -200,3 +200,59 @@ spec:
 
 **emptyDir** - Fica vinculado a uma Pod, ou seja, não morre enquanto a Pod existir. 
 **hostPath** - Funciona exatamente como um bind-mount.
+
+# Exemplo 3 e a utilização do volume type emptyDir
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+    containers:
+      - name: spring-app
+        image: azold6/jenkins-with-spring:jenkins-spring-pipeline-49
+        volumeMounts:
+          - mountPath: /path/in/container/here
+            name: my-emptydir
+    volumes:
+      - name: my-emptydir
+        emptyDir: {}
+```
+
+# Exemplo 4 e a utilização do volume type hostPath
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: app-hostPath
+  template:
+    metadata:
+      labels:
+        app: app-hostPath
+    containers:
+      - name: spring-app
+        image: azold6/jenkins-with-spring:jenkins-spring-pipeline-49
+        volumeMounts:
+          - mountPath: /path/in/container/here ###
+            name: my-hostpath                    # 
+    volumes:                                     # Esse volume-type é como um bind-mount
+      - name: my-hostpath                        # "Binda" um path na Pod com um path no host
+        hostPath:                                #
+          path: /path/in/host/machine/here #######
+          type: DirectoryOrCreate # Se o path 1 linha acima não existir, será criado.
+```
