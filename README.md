@@ -116,3 +116,29 @@ Pronto! Para verificar o progresso das mudanças, executar
 ```
 kubectl rollout status deployment/<DEPLOYMENT>
 ```
+
+# Exemplo 1 e explicação de um Deployment declarativo básico
+
+O primeiro **spec** fornece informações ao **Deployment**, como quantidade de Pods (replicas), qual label uma Pod deve ter para ser gerenciada por aquele Deployment, e o template da(s) Pod(s) que serão criadas com aquele deployment.
+
+O **template** faz referência ao "perfil" da Pod. A aba **metadata** dentro do template define as labels da Pod, e o segundo **spec** define as especificações da Pod, como imagem utilizada e nome do contêiner.
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-app
+spec: 
+  replicas: 1
+  selector: 
+    matchLabels:                                   
+      app: spring-app ############################## 
+  template:                                       ## Essas labels devem bater.
+    metadata:                                     ## Está informando para o deployment que ele deve gerenciar
+      labels:                                     ## Pods com a label "app: spring-app"
+        app: spring-app ############################
+    spec:
+      containers:
+        - name: spring-application
+          image: azold6/jenkins-with-spring:jenkins-spring-pipeline-49
+```
