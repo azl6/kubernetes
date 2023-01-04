@@ -26,7 +26,7 @@ kubectl create deployment '<DEPLOYMENT_NAME>' --image='<IMAGE>'
 kubectl delete deployment '<DEPLOYMENT_NAME>'
 ```
 
-# Criando um service para expor uma aplicação com o kubectl expose
+# Criando um Service para expor uma aplicação com o kubectl expose
 
 ```
 kubectl expose deployment '<DEPLOYMENT_NAME>' --port=<PORT> --type=<TYPE>
@@ -48,4 +48,25 @@ Isso acontece porque um cloud-provider já forneceria tal IP, mas rodando o Kube
 ```
 minikube service <SERVICE>
 ```
+
+# Escalando Pods com o kubectl scale
+
+```
+kubectl scale deployment/<DEPLOYMENT> --replicas=<DERIRED_NUMBER_OF_PODS>
+```
+
+Antes do escalonamento:
+
+![image](https://user-images.githubusercontent.com/80921933/210464647-32c9dc80-c107-4276-816c-79230ac0d41c.png)
+
+Comando rodado:
+
+```
+kubectl scale deployment/spring-app --replicas=5
+```
+
+Depois do escalonamento:
+
+![image](https://user-images.githubusercontent.com/80921933/210464692-93118384-fb87-46a2-b5a2-13b8bc3cbb7c.png)
+
 
