@@ -165,3 +165,33 @@ spec:
       protocol: 'TCP'
   type: LoadBalancer
 ```
+
+# Exemplo 2 e a utilização do Liveness Probe
+
+O Liveness Probe existe para termos mais controle sobre os healthchecks do Kubernetes. Útil caso tenhamos que apontar para um endpoint específico da aplicação.
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: with-livenessprobe
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: spring-app
+  template:
+    metadata:
+      labels:
+        app: spring-app
+    spec:
+      containers:
+        - name: spring-app
+          image: azold6/jenkins-with-spring:jenkins-spring-pipeline-49
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 8080
+            periodSeconds: 3
+            initialDelaySeconds: 3
+```
