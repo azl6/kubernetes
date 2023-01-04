@@ -26,6 +26,12 @@ kubectl create deployment '<DEPLOYMENT_NAME>' --image='<IMAGE>'
 kubectl delete deployment '<DEPLOYMENT_NAME>'
 ```
 
+Ou, caso o deployment tenha sido criado na forma declarativa (arquivo), também é possível deletar apontando para o arquivo
+
+```
+kubectl delete -f=deployment.yaml -f=service.yaml -f=...
+```
+
 # Criando um Service para expor uma aplicação com o kubectl expose
 
 ```
