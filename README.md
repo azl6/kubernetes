@@ -14,13 +14,13 @@ O minikube é uma "VMzinha" que simula um cluster Kubernetes, sem inúmeros work
 kubectl get <RECURSO>
 ```
 
-# Criando deployments com o kubectl create no modo imperativo
+# Criando Deployments com o kubectl create no modo imperativo
 
 ```
 kubectl create deployment '<DEPLOYMENT_NAME>' --image='<IMAGE>'
 ```
 
-# Deletando deployments com o kubectl delete
+# Deletando Deployments com o kubectl delete
 
 ```
 kubectl delete deployment '<DEPLOYMENT_NAME>'
