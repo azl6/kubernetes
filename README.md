@@ -198,7 +198,7 @@ spec:
 
 # Explicação sobre os tipos de volumes
 
-**emptyDir** - Fica vinculado a uma Pod, ou seja, não morre enquanto a Pod existir. 
+**emptyDir** - Fica vinculado a uma Pod, ou seja, não morre enquanto a Pod existir. <br>
 **hostPath** - Funciona exatamente como um bind-mount.
 
 # Exemplo 3 e a utilização do volume type emptyDir
