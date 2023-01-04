@@ -75,7 +75,7 @@ Depois do escalonamento:
 kubectl set image deployment/<DEPLOYMENT> <CONTAINER>=<NEW_IMAGE>
 ```
 
-**\<CONTAINER>** é a **base da imagem**utilizada, sem a tag, ex: na imagem **maven:3.8.6**, a **base da imagem** seria **maven**
+**\<CONTAINER>** é a **base da imagem** utilizada, sem a tag, ex: na imagem **maven:3.8.6**, a **base da imagem** seria **maven**
 
 Para "confirmar" as mudanças, executar 
 
