@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-app
+spec: 
+  replicas: 1
+  selector: 
+    matchLabels:                                   
+      app: spring-app ############################## 
+  template:                                       ## Essas labels devem bater.
+    metadata:                                     ## Está informando para o deployment que ele deve gerenciar
+      labels:                                     ## Pods com a label "app: spring-app"
+        app: spring-app ############################
+    spec:
+      containers:
+        - name: spring-application
+          image: azold6/jenkins-with-spring:jenkins-spring-pipeline-49
