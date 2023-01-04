@@ -142,3 +142,20 @@ spec:
         - name: spring-application
           image: azold6/jenkins-with-spring:jenkins-spring-pipeline-49
 ```
+
+# Exemplo 1 e explicação de um Service declarativo básico
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-spring-app 
+spec:
+  selector:
+    app: spring-app ######### Selector deve bater com o label da(s) Pod(s) para expor a porta 
+  ports:
+    - port: 80
+      targetPort: 8081
+      protocol: 'TCP'
+  type: LoadBalancer
+```
