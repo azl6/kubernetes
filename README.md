@@ -77,7 +77,7 @@ kubectl set image deployment/<DEPLOYMENT> <CONTAINER>=<NEW_IMAGE>
 
 **\<CONTAINER>** é a **base da imagem** utilizada, sem a tag, ex: na imagem **maven:3.8.6**, a **base da imagem** seria **maven**
 
-Para "confirmar" as mudanças, executar 
+Para verificar o progresso das mudanças, executar 
 
 ```
 kubectl rollout status deployment/<DEPLOYMENT>
@@ -87,5 +87,32 @@ Caso a seguinte saída aconteça, os Pods foram atualizados
 
 ![image](https://user-images.githubusercontent.com/80921933/210465852-881647b1-1dc7-4bea-bcad-29add2ed49ab.png)
 
+# Realizando o rollout de uma alteração
 
+Com o seguinte comando, podemos verificar o histórico de alterações em um deployment
 
+```
+kubectl rollout history deployment/<DEPLOYMENT>
+```
+
+Teremos uma saída nos informando sobre todas as alterações
+
+![image](https://user-images.githubusercontent.com/80921933/210469570-512f78e3-12fb-4598-a775-934f0df94bde.png)
+
+Podemos detalhar uma revision adicionando a flag **--revision=<REVISION_NUMBER>**
+
+```
+kubectl rollout history revision=2
+```
+
+Após escolher uma revision de destino para realizar o rollback, executamos
+
+```
+kubectl rollout undo deployment/<DEPLOYMENT> --to-revision=<REVISION_NUMBER>
+```
+
+Pronto! Para verificar o progresso das mudanças, executar 
+
+```
+kubectl rollout status deployment/<DEPLOYMENT>
+```
