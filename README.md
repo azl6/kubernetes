@@ -195,3 +195,7 @@ spec:
             periodSeconds: 3
             initialDelaySeconds: 3
 ```
+
+# Explicação sobre os tipos de volumes
+
+**emptyDir** - Fica vinculado a uma Pod, ou seja, não morre enquanto a Pod existir. 
