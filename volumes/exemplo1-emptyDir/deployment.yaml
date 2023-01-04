@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: volumes-emptydir
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: emptyDir
+  template:
+    metadata:
+      labels:
+        app: emptyDir
+    containers:
+      - name: spring-app
+        image: azold6/jenkins-with-spring:jenkins-spring-pipeline-49
+        volumeMounts:
+          - mountPath: /pathincontainerhere
+            name: my-emptydir-volume
+    volumes:
+      - name: my-emptydir-volume
+        emptyDir: {}
