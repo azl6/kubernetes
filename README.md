@@ -87,7 +87,7 @@ Caso a seguinte saída aconteça, os Pods foram atualizados
 
 ![image](https://user-images.githubusercontent.com/80921933/210465852-881647b1-1dc7-4bea-bcad-29add2ed49ab.png)
 
-# Realizando o rollout de uma alteração
+# Realizando o rollout de uma alteração em um Deployment
 
 Com o seguinte comando, podemos verificar o histórico de alterações em um deployment
 
