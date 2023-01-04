@@ -69,4 +69,23 @@ Depois do escalonamento:
 
 ![image](https://user-images.githubusercontent.com/80921933/210464692-93118384-fb87-46a2-b5a2-13b8bc3cbb7c.png)
 
+# Atualizando a docker-image de um deployment
+
+```
+kubectl set image deployment/<DEPLOYMENT> <CONTAINER>=<NEW_IMAGE>
+```
+
+**\<CONTAINER>** é a base da imagem utilizada, sem a tag.
+
+Para "confirmar" as mudanças, executar 
+
+```
+kubectl rollout status deployment/<DEPLOYMENT>
+```
+
+Caso a seguinte saída aconteça, os Pods foram atualizados
+
+![image](https://user-images.githubusercontent.com/80921933/210465852-881647b1-1dc7-4bea-bcad-29add2ed49ab.png)
+
+
 
