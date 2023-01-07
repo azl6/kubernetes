@@ -393,3 +393,19 @@ spec:
                   name: my-configmap # Name of my ConfigMap
                   key: hello # Key name inside my ConfigMap
 ```
+
+# Comunicação entre dois contêineres na mesma Pod
+
+Exemplo de dois contêineres na mesma Pod:
+
+```yaml
+  # ...
+  spec:
+    containers:
+      - name:  cont-users
+        image:  azold6/kub-demo-users:latest
+      - name: cont-auth
+        image: azold6/kub-demo-auth:latest
+```
+
+Quando dois contêineres sobem na mesma Pod e precisamos que eles se comuniquem, podemos usar **localhost** dentro do código para que eles consigam se comunicar.
