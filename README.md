@@ -352,3 +352,16 @@ spec:
           - name: MY_ENV_2
             value: 'world'
 ```
+
+# Exemplo 9 e a criação de ConfigMaps
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: my-configmap
+data:
+  MY_ENV_1: 'hello'
+  MY_ENV_2: 'world'
+  # key: value...
+```
