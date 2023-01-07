@@ -108,7 +108,7 @@ Teremos uma saída nos informando sobre todas as alterações
 Podemos detalhar uma revision adicionando a flag **--revision=<REVISION_NUMBER>**
 
 ```
-kubectl rollout history revision=2
+kubectl rollout history deployment/<DEPLOYMENT> --revision=2
 ```
 
 Após escolher uma revision de destino para realizar o rollback, executamos
