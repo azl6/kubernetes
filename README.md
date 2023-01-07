@@ -326,3 +326,29 @@ spec:
             claimName: my-pvc ### Nome do PVC
 
 ```
+
+# Exemplo 8 e utilização de environment variables no Deployment
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: spring-app
+  template:
+    metadata:
+      labels:
+        app: spring-app
+    containers:
+      - name: spring-application
+        image: azold6/jenkins-with-spring:jenkins-spring-pipeline-49
+        env: # Definimos as env aqui...
+          - name: MY_ENV_1
+            value: 'hello'
+          - name: MY_ENV_2
+            value: 'world'
+```
