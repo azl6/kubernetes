@@ -409,3 +409,13 @@ Exemplo de dois contêineres na mesma Pod:
 ```
 
 Quando dois contêineres sobem na mesma Pod e precisamos que eles se comuniquem, podemos usar **localhost** dentro do código para que eles consigam se comunicar.
+
+# Comunicação entre dois contêineres em Pods diferentes
+
+Quando dois contêineres sobem em Pods diferentes (aka Deployments diferentes), podemos usar variáveis de ambiente geradas pelo Kubernetes no seguinte padrão:
+
+```
+<NOME_SERVICE>_SERVICE_HOST
+```
+
+Para dúvidas, consultar a aula 232 (Maximilian Schwarzmüller)
