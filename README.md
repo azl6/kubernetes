@@ -198,8 +198,8 @@ spec:
 
 # Explicação sobre os tipos de volumes
 
-**emptyDir** - Fica vinculado a uma Pod, ou seja, não morre enquanto a Pod existir. <br>
-**hostPath** - Funciona exatamente como um bind-mount.
+**emptyDir** - Fica vinculado a uma Pod, ou seja, não morre enquanto a Pod existir, mas se a Pod for substituida, o volume "reinicia" (fica fazio novamente). Usado somente quando precisamos de dados temporários <br>
+**hostPath** - Funciona exatamente como um bind-mount. Escolhe um caminho na máquina host para "bindar" a um caminho dentro de um worker-node (Confirmar isso!).
 
 # Exemplo 3 e a utilização do volume type emptyDir
 
@@ -222,9 +222,9 @@ spec:
         image: azold6/jenkins-with-spring:jenkins-spring-pipeline-49
         volumeMounts:
           - mountPath: /path/in/container/here
-            name: my-emptydir
-    volumes:
-      - name: my-emptydir
+            name: my-emptydir ##
+    volumes:                   # Match
+      - name: my-emptydir ######
         emptyDir: {}
 ```
 
@@ -249,9 +249,9 @@ spec:
         image: azold6/jenkins-with-spring:jenkins-spring-pipeline-49
         volumeMounts:
           - mountPath: /path/in/container/here ###
-            name: my-hostpath                    # 
-    volumes:                                     # Esse volume-type é como um bind-mount
-      - name: my-hostpath                        # "Binda" um path na Pod com um path no host
+            name: my-hostpath ##                 # 
+    volumes:                   # Match           # Esse volume-type é como um bind-mount
+      - name: my-hostpath ######                 # "Binda" um path na Pod com um path no host
         hostPath:                                #
           path: /path/in/host/machine/here #######
           type: DirectoryOrCreate # Se o path 1 linha acima não existir, será criado.
