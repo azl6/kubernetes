@@ -196,10 +196,11 @@ spec:
             initialDelaySeconds: 3
 ```
 
-# Explicação sobre os tipos de volumes
+# Explicação sobre os tipos de volumes e persistent volumes
 
 **emptyDir** - Fica vinculado a uma Pod, ou seja, não morre enquanto a Pod existir, mas se a Pod for substituida, o volume "reinicia" (fica fazio novamente). Usado somente quando precisamos de dados temporários <br>
 **hostPath** - Funciona exatamente como um bind-mount. Escolhe um caminho na máquina host para "bindar" a um caminho dentro de um worker-node (Confirmar isso!).
+**Persistent Volumes** - São volumes independentes de Pods e worker-nodes. Eles usam outros volumes para funcionar. Para que uma Pod possa utilizá-lo, ela deve usar um **Persistent Volume Claim**
 
 # Exemplo 3 e a utilização do volume type emptyDir
 
@@ -255,4 +256,71 @@ spec:
         hostPath:                                #
           path: /path/in/host/machine/here #######
           type: DirectoryOrCreate # Se o path 1 linha acima não existir, será criado.
+```
+
+# Exemplo 5 e a criação de um Persistent Volume
+
+```yaml
+apiVersion: apps/v1
+kind: PersistentVolume
+metadata:
+  name: app-pv
+spec:
+  capacity:
+    storage: 1Gi
+  volumeMode: Filesystem # Block ou Filesystem. Consultar documentação.
+  accessModes:
+    - ReadWriteOnce # Quantos WN podem montar o volume. Consultar documentação.
+  hostPath:
+    path: /path/in/host/machine/here
+    type: DirectoryOrCreate # Se o path 1 linha acima não existir, será criado.
+```
+# Exemplo 6 e a criação de um Persistent Volume Claim
+
+Para esse exemplo, foi usado o o PV do exemplo 5 (acima)
+
+```yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: my-pvc
+spec:
+  volumeName: my-pv ##### Nome do PV
+  accessModes:
+    - ReadWriteOnce 
+  resources: ############ Especificação de recursos "claimados"
+    requests:
+      storage: 1Gi 
+```
+
+# Exemplo 7 e a montagem de um PVC em um Deployment
+
+Para esse exemplo, foi usado o PVC do exemplo 6 (acima)
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: spring-app
+  template:
+    metadata:
+      labels:
+        app: spring-app
+    spec:
+      containers:
+        - name: application
+          image: azold6/jenkins-with-spring:jenkins-spring-pipeline-53
+          volumeMounts:
+            - mountPath: /path/in/container/here
+              name: my-volume ###
+      volumes:                  # Match
+        - name: my-volume #######
+          persistentVolumeClaim:
+            claimName: my-pvc ### Nome do PVC
+
 ```
