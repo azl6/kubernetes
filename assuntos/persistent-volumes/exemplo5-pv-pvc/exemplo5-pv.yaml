@@ -1,0 +1,13 @@
+apiVersion: apps/v1
+kind: PersistentVolume
+metadata:
+  name: my-pv
+spec:
+  capacity:
+    storage: 1Gi
+  volumeMode: Filesystem # Block ou Filesystem. Consultar documentação.
+  accessModes:
+    - ReadWriteOnce # Quantos WN podem montar o volume. Consultar documentação.
+  hostPath:
+    path: /path/in/host/machine/here
+    type: DirectoryOrCreate # Se o path 1 linha acima não existir, será criado.

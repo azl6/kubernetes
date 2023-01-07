@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: my-pv
+spec:
+  capacity:
+      storage: 1Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce # Os pods de somente 1 worker-node terão RW access
+  hostPath:
+    path: /path/in/host/machine/here 
+    type: DirectoryOrCreate # Se o path 1 linha acima não existir, será criado.
