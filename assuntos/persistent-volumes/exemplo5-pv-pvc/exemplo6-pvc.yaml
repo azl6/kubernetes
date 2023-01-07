@@ -6,6 +6,7 @@ spec:
   volumeName: my-pv ##### Nome do PV
   accessModes:
     - ReadWriteOnce 
+  storageClassName: standard
   resources: ############ Especificação de recursos "claimados"
     requests:
       storage: 1Gi 

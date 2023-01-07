@@ -264,11 +264,12 @@ spec:
 apiVersion: apps/v1
 kind: PersistentVolume
 metadata:
-  name: app-pv
+  name: my-pv
 spec:
   capacity:
     storage: 1Gi
   volumeMode: Filesystem # Block ou Filesystem. Consultar documentação.
+  storageClassName: standard
   accessModes:
     - ReadWriteOnce # Quantos WN podem montar o volume. Consultar documentação.
   hostPath:
@@ -288,6 +289,7 @@ spec:
   volumeName: my-pv ##### Nome do PV
   accessModes:
     - ReadWriteOnce 
+  storageClassName: standard
   resources: ############ Especificação de recursos "claimados"
     requests:
       storage: 1Gi 

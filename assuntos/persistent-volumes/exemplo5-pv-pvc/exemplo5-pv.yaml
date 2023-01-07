@@ -6,6 +6,7 @@ spec:
   capacity:
     storage: 1Gi
   volumeMode: Filesystem # Block ou Filesystem. Consultar documentação.
+  storageClassName: standard
   accessModes:
     - ReadWriteOnce # Quantos WN podem montar o volume. Consultar documentação.
   hostPath:
