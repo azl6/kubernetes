@@ -412,6 +412,8 @@ Quando dois contêineres sobem na mesma Pod e precisamos que eles se comuniquem,
 
 # Comunicação entre dois contêineres em Pods diferentes
 
+**Método 1**
+
 Quando dois contêineres sobem em Pods diferentes (aka Deployments diferentes), podemos usar variáveis de ambiente geradas pelo Kubernetes no seguinte padrão:
 
 ```
@@ -419,3 +421,23 @@ Quando dois contêineres sobem em Pods diferentes (aka Deployments diferentes), 
 ```
 
 Para dúvidas, consultar a aula 232 (Maximilian Schwarzmüller)
+
+**Método 2**
+
+O Kubernetes usa um serviço chamado CoreDNS, que permite que usemos o nome de um **Service** para referenciar outra aplicação (de forma similar ao docker-compose, quando dois contêineres estão na mesma network, e podemos referênciá-los por seus nomes. No Kubernetes, os nomes são substituidos pelo nome do **Service**)
+
+Para referenciarmos outra aplicação, utilizamos a seguinte sintaxe
+
+```
+<NOME_SERVIÇO>.<NAMESPACE>
+```
+
+Por padrão o \<NAMESPACE> terá o valor de **default**
+
+Então, caso a aplicação 1 precise mandar um request HTTP para a aplicação cujo Service chama-se **app2** e roda na porta 9090, inseriríamos, no código da aplicação 1, o seguinte domínio:
+
+```
+app2.default:9090
+```
+
+Geralmente, o domínio é fornecido através de variáveis de ambiente, configurados no próprio Deployment.
