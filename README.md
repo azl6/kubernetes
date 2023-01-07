@@ -365,3 +365,31 @@ data:
   MY_ENV_2: 'world'
   # key: value...
 ```
+
+# Exemplo 10 e a utilização de ConfigMaps em Deployments
+
+```yaml
+apiVersion: v1
+kind: Deployment
+metadata:
+  name: spring-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: spring-app
+  template:
+    metadata:
+      labels:
+        app: spring-app
+    spec:
+      containers:
+        - name: spring-application
+          image: azold6/jenkins-with-spring:jenkins-spring-pipeline-49
+          env:
+            - NAME: ENV_HELLO
+              valueFrom:
+                configMapKeyRef:
+                  name: my-configmap # Name of my ConfigMap
+                  key: hello # Key name inside my ConfigMap
+```
