@@ -441,3 +441,59 @@ app2.default:9090
 ```
 
 Geralmente, o domínio é fornecido através de variáveis de ambiente, configurados no próprio Deployment.
+
+# Informações namespaces
+
+Os namespaces "isolam" recursos do cluster virtualmente, para permitir que muitos times trabalhem de forma paralela. Também podem ser usados para limitar recursos para certos namespaces, etc...
+
+# Criando namespaces
+
+Para criar um novo namespace, podemos usar um arquivo yaml no seguinte formato:
+
+```
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: <insert-namespace-name-here>
+```
+
+alternativamente, podemos usar o comando 
+
+```
+kubectl create namespace <insert-namespace-name-here>
+```
+
+# Listando namespaces disponíveis
+
+```
+kubectl get namespaces
+```
+
+# Inserindo recursos em namespaces
+
+Caso tenhamos um recurso em um arquivo yaml, e queiramos inserí-lo em um namespace, usamos o seguinte comando
+
+```
+kubectl apply -f=<ARQUIVO> -n=<NAMESPACE>
+```
+
+Também é possível especificar o namespace no próprio arquivo, da seguinte forma:
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-deployment
+  namespace: alex # Namespace deve ser especificado no campo metadata
+spec:
+# ...
+```
+
+# Buscando recursos contidos em certos namespaces
+
+Para buscar Pods, Deployments, ou qualquer outro recurso em um namespace, podemos executar o comando
+
+```
+kubectl get pods -n=<NAMESPACE>
+```
+
