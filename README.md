@@ -450,7 +450,7 @@ Os namespaces "isolam" recursos do cluster virtualmente, para permitir que muito
 
 Para criar um novo namespace, podemos usar um arquivo yaml no seguinte formato:
 
-```
+```yaml
 apiVersion: v1
 kind: Namespace
 metadata:
