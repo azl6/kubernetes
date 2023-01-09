@@ -486,7 +486,7 @@ metadata:
   name: my-deployment
   namespace: alex # Namespace deve ser especificado no campo metadata
 spec:
-# ...
+# ...               Pods já serão criadas no namespace especificado acima
 ```
 
 # Buscando recursos contidos em alguns ou em todos os namespaces
