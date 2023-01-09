@@ -497,3 +497,23 @@ Para buscar Pods, Deployments, ou qualquer outro recurso em um namespace, podemo
 kubectl get pods -n=<NAMESPACE>
 ```
 
+# Habilianto o auto completion para comandos do Kubernetes
+
+Trocar para o root user
+
+```
+sudo su -
+```
+
+Executar
+
+```
+kubectl completion bash > /etc/bash_completion.d/kubectl
+```
+
+Para não precisar reiniciar o terminal, executar
+
+```
+source <(kubectl completion bash)
+```
+
