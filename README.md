@@ -489,12 +489,18 @@ spec:
 # ...
 ```
 
-# Buscando recursos contidos em certos namespaces
+# Buscando recursos contidos em alguns ou em todos os namespaces
 
 Para buscar Pods, Deployments, ou qualquer outro recurso em um namespace, podemos executar o comando
 
 ```
 kubectl get pods -n=<NAMESPACE>
+```
+
+Para buscar recursos de todos os namespaces, podemos executar
+
+```
+kubectl get pods --all-namespaces
 ```
 
 # Habilianto o auto completion para comandos do Kubernetes
