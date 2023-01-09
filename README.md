@@ -523,3 +523,8 @@ Para não precisar reiniciar o terminal, executar
 source <(kubectl completion bash)
 ```
 
+# Detalhando recursos com o kubectl describe
+
+Podemos usar o comando **kubectl describe** para detalhar recursos (Pods, Deployments, Services, etc...) do Kubernetes
+
+Cada recurso oferece diferentes informações
