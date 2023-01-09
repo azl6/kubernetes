@@ -528,3 +528,11 @@ source <(kubectl completion bash)
 Podemos usar o comando **kubectl describe** para detalhar recursos (Pods, Deployments, Services, etc...) do Kubernetes
 
 Cada recurso oferece diferentes informações
+
+# Personalizando o formato de saída de recursos
+
+Podemos especificar o formato de saída (yaml, json, etc...) ao usar o comando **kubectl get ...** com a flag **-o \<FORMATO>**
+
+```
+kubectl get deployment/my-dep -o <FORMATO>
+```
