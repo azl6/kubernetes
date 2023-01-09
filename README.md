@@ -632,3 +632,11 @@ spec:
               memory: 256Mi
               cpu: "250m"
 ```
+
+# Entrando em Pods com o kubectl exec
+
+O **kubectl exec** funciona de forma exatamente igual ao **docker exec**, com a seguinte sintaxe
+
+```
+kubectl exec -it <POD> <COMANDO>
+```
