@@ -597,6 +597,9 @@ template:
 
 # Exemplo 12 e a limitação de recursos de uma Pod com o campo resources
 
+O campo "limits" define o máximo que o Kubernetes irá fornecer de recursos
+O campo "requests" define a quantidade de recursos que o Kubernetes **garantirá** aos Pods
+
 ```yaml
 apiVersion: apps/v1
 kind: Deployment
