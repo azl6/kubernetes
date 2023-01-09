@@ -537,7 +537,7 @@ Podemos especificar o formato de saída (yaml, json, wide, etc...) ao usar o com
 kubectl get deployment/my-dep -o <FORMATO>
 ```
 
-# Session Affinity em um Service
+# Exemplo 12 e a utilização de Session Affinity em um Service
 
 O campo **sessionAffinity** pode ser usado como um sticky-session. Por enquanto, conheço somente a opção **ClientIP**, que determina que um cliente com o mesmo IP vai sempre bater na mesma Pod.
 
