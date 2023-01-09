@@ -557,3 +557,40 @@ spec:
   type: LoadBalancer
   sessionAffinity: ClientIP ## Definição do sessionAffinity
 ```
+
+# Definindo dnsPolicy de um Deployment
+
+o campo **dnsPolicy** se refere para onde as Pods "olharão" primeiro ao se deparar com um DNS. o value **ClusterFirst** denota que DNSes internos do cluster serão consultados primeiramente.
+
+```yaml
+# ...
+template:
+  metatada:
+    labels:
+      app: my-app
+  spec:
+    containers:
+      - image: xxx
+        name: yyy
+    dnsPolicy: ClusterFirst
+# ...
+```
+
+
+# Definindo restartPolicy de um Deployment
+
+o campo **restartPolicy** se refere à ação que acontecerá quando um Pod não estiver healthy. O restartPolicy: Always define que Pods não-saudáveis sempre serão reiniciados.
+
+```yaml
+# ...
+template:
+  metatada:
+    labels:
+      app: my-app
+  spec:
+    containers:
+      - image: xxx
+        name: yyy
+    restartPolicy: Always
+# ...
+```
