@@ -640,3 +640,33 @@ O **kubectl exec** funciona de forma exatamente igual ao **docker exec**, com a 
 ```
 kubectl exec -it <POD> <COMANDO>
 ```
+
+# Exemplo 13 e a criação de um LimitRange para aplicar limites em recursos em um namespace
+
+limitacao.yaml
+
+```yaml
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: my-limitrange
+spec:
+  limits:
+  - default:
+     cpu: '1'
+     memory: 256Mi
+    defaultRequest:
+      cpu: '0.5'
+      memory: 128Mi
+    type: Container
+```
+
+Devemos aplicar esse LimitRange em algum namespace. Nesse caso, aplicarei no namespace **alex**
+
+```
+kubectl apply -f=limitacao.yaml -n=alex
+```
+
+Agora, executando o **kubectl describe**, podemos confirmar que a limitação funcionou
+
+![image](https://user-images.githubusercontent.com/80921933/211369645-333c6fc9-e1f5-404d-9097-bc18afd25270.png)
