@@ -670,3 +670,8 @@ kubectl apply -f=limitacao.yaml -n=alex
 Agora, executando o **kubectl describe**, podemos confirmar que a limitação funcionou
 
 ![image](https://user-images.githubusercontent.com/80921933/211369645-333c6fc9-e1f5-404d-9097-bc18afd25270.png)
+
+# Adicionando e removendo Taints de nodes
+
+NoSchedule e NoExecute
+Consultar aula de Taints do Day 2
