@@ -531,7 +531,7 @@ Cada recurso oferece diferentes informações
 
 # Personalizando o formato de saída de recursos
 
-Podemos especificar o formato de saída (yaml, json, etc...) ao usar o comando **kubectl get ...** com a flag **-o \<FORMATO>**
+Podemos especificar o formato de saída (yaml, json, wide, etc...) ao usar o comando **kubectl get ...** com a flag **-o \<FORMATO>**
 
 ```
 kubectl get deployment/my-dep -o <FORMATO>
