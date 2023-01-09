@@ -597,7 +597,7 @@ template:
 
 # Exemplo 12 e a limitação de recursos de uma Pod com o campo resources
 
-```
+```yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
