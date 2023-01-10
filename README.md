@@ -368,6 +368,8 @@ data:
 
 # Exemplo 10 e a utilização de ConfigMaps em Deployments
 
+Para esse exemplo, o ConfigMap acima foi referenciado no Deployment
+
 ```yaml
 apiVersion: v1
 kind: Deployment
