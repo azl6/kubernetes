@@ -792,3 +792,17 @@ spec:
       nodeSelector:
         disk: SSD # Pods só serão criadas em nodes que contém o label disk: SSD
 ```
+
+# Utilização do ReplicaSet
+
+O ReplicaSet é o controller das Pods. Sempre que um Deployment é criado, automaticamente é criado um ReplicaSet.
+
+São importantes pelos seguintes motivos:
+
+- **Verificação de logs caso alguma pod não seja criada de forma bem-sucedida**
+    
+    Passei por uma situação onde havia um LimitRange aplicado ao namespace. Ao tentar criar Pods com requests de recursos acima do limite estabelecido no LimitRange, **não recebia nenhum log na CLI** (como acontece de costume quando os limits e requests são definidos em um só manifesto). Só consegui consultar tais logs através do ReplicaSet, com o **kubectl describe replicaset my-replicaset**
+    
+- **Entendimento do funcionamento de rollouts e do Kubernetes no geral**
+
+    Por debaixo dos panos, o **kubectl rollout undo ...** se utiliza de ReplicaSets antigos para realizar o rollback. Da mesma forma, a cada versão nova do Deployment, temos um novo ReplicaSet criado.
