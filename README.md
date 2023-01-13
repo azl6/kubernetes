@@ -734,3 +734,24 @@ spec:
             claimName: my-pvc
 ```
 
+# Aplicando labels via CLI
+
+Podemos usar o comando abaixo, substituindo **pod** pelo recurso desejado
+
+```
+kubectl label pod spring-app-6985dcbc89-8hbnx projeto=site_markket
+```
+
+Para **atualizar labels**, basta passar a flag --overwrite
+
+```
+kubectl label pod spring-app-6985dcbc89-8hbnx projeto=projeto_governo --overwrite
+```
+
+# Listando recursos com uma label desejada
+
+Basta passar a flag **-l** nos comandos do Kubernetes
+
+```
+kubectl get pods -l app=spring-app
+```
