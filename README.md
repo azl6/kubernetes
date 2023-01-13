@@ -755,3 +755,32 @@ Basta passar a flag **-l** nos comandos do Kubernetes
 ```
 kubectl get pods -l app=spring-app
 ```
+
+# Exemplo 14 e a utilização do nodeSelector para subir Pods em nodes com certas labels
+
+Podemos usar a chave **nodeSelector** para selecionar os nodes onde subiremos nossas Pods. Essa seleção é feita através de labels.
+
+Exemplo de yaml com nodeSelector:
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-dep
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: spring-app
+  template:
+    metadata:
+      labels:
+        app: spring-app
+    spec:
+      containers:
+        - name: spring-application
+          image: azold6/jenkins-with-spring:jenkins-spring-pipeline-49
+      nodeSelector:
+        disk: SSD # Pods só serão criadas em nodes que contém o label disk: SSD
+```
