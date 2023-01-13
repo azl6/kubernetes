@@ -756,6 +756,14 @@ Basta passar a flag **-l** nos comandos do Kubernetes
 kubectl get pods -l app=spring-app
 ```
 
+# Listando as labels de um recurso
+
+Substituir pod pelo recurso adequado. 
+
+```
+kubectk label pod my-pod --list
+```
+
 # Exemplo 14 e a utilização do nodeSelector para subir Pods em nodes com certas labels
 
 Podemos usar a chave **nodeSelector** para selecionar os nodes onde subiremos nossas Pods. Essa seleção é feita através de labels.
