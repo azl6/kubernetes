@@ -678,3 +678,59 @@ Agora, executando o **kubectl describe**, podemos confirmar que a limitação fu
 
 NoSchedule e NoExecute
 Consultar aula de Taints do Day 2
+
+# Referência do Deployment de um app Spring usando volumes, configmaps e limitranges
+
+A aplicação completa pode ser encontrada no seguinte repositório:
+
+https://github.com/azl6/spring-fileupload-simple
+
+Todos os yaml estão dentro da pasta **kubernetes**. Abaixo, segue o exemplo de um Deployment completo da aplicação. Para mais detalhes, favor direcionar-se para o link acima
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fileupload-dep
+  namespace: alex
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fileupload
+  template:
+    metadata:
+      labels:
+        app: fileupload
+    spec:
+      containers:
+        - name: fileupload
+          image: azold6/fileupload-pv-pvc:latest
+          livenessProbe:
+            httpGet: 
+              path: /actuator/health/liveness
+              port: 8080
+            periodSeconds: 30
+            initialDelaySeconds: 10
+          #resources: ###############################
+          #  limits:                                #
+          #    cpu: '1'                             # Descomentar caso haja LimitRange
+          #    memory: 500Mi                        # No namespace definido aqui...
+          #  requests:                              #
+          #    cpu: '2'                             #
+          #    memory: 800Mi ########################
+          env:
+            - name: UPLOADED_FILES_DIR
+              valueFrom:
+                configMapKeyRef:
+                  name: my-configmap
+                  key: FILES_UPLOAD_CHOSEN_DIR
+          volumeMounts:
+            - mountPath: /home/my-custom-dir
+              name: uploaded-files-storage
+      volumes:
+        - name: uploaded-files-storage
+          persistentVolumeClaim:
+            claimName: my-pvc
+```
+
