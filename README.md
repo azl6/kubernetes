@@ -761,7 +761,7 @@ kubectl get pods -l app=spring-app
 Substituir pod pelo recurso adequado. 
 
 ```
-kubectk label pod my-pod --list
+kubectl label pod my-pod --list
 ```
 
 # Exemplo 14 e a utilização do nodeSelector para subir Pods em nodes com certas labels
