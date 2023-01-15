@@ -10,31 +10,31 @@ O minikube é uma "VMzinha" que simula um cluster Kubernetes, sem inúmeros work
 
 # Listando recursos com o kubectl get
 
-```
+```bash
 kubectl get <RECURSO>
 ```
 
 # Criando Deployments com o kubectl create no modo imperativo
 
-```
+```bash
 kubectl create deployment '<DEPLOYMENT_NAME>' --image='<IMAGE>'
 ```
 
 # Deletando Deployments com o kubectl delete
 
-```
+```bash
 kubectl delete deployment '<DEPLOYMENT_NAME>'
 ```
 
 Ou, caso o deployment tenha sido criado na forma declarativa (arquivo), também é possível deletar apontando para o arquivo
 
-```
+```bash
 kubectl delete -f=deployment.yaml -f=service.yaml -f=...
 ```
 
 # Criando um Service para expor uma aplicação com o kubectl expose
 
-```
+```bash
 kubectl expose deployment '<DEPLOYMENT_NAME>' --port=<PORT> --type=<TYPE>
 ```
 
@@ -57,7 +57,7 @@ minikube service <SERVICE>
 
 # Escalando Pods com o kubectl scale
 
-```
+```bash
 kubectl scale deployment/<DEPLOYMENT> --replicas=<DERIRED_NUMBER_OF_PODS>
 ```
 
@@ -67,7 +67,7 @@ Antes do escalonamento:
 
 Comando rodado:
 
-```
+```bash
 kubectl scale deployment/spring-app --replicas=5
 ```
 
@@ -77,7 +77,7 @@ Depois do escalonamento:
 
 # Atualizando a docker-image de um deployment
 
-```
+```bash
 kubectl set image deployment/<DEPLOYMENT> <CONTAINER>=<NEW_IMAGE>
 ```
 
@@ -85,7 +85,7 @@ kubectl set image deployment/<DEPLOYMENT> <CONTAINER>=<NEW_IMAGE>
 
 Para verificar o progresso das mudanças, executar 
 
-```
+```bash
 kubectl rollout status deployment/<DEPLOYMENT>
 ```
 
@@ -97,7 +97,7 @@ Caso a seguinte saída aconteça, os Pods foram atualizados
 
 Com o seguinte comando, podemos verificar o histórico de alterações em um deployment
 
-```
+```bash
 kubectl rollout history deployment/<DEPLOYMENT>
 ```
 
@@ -107,19 +107,19 @@ Teremos uma saída nos informando sobre todas as alterações
 
 Podemos detalhar uma revision adicionando a flag **--revision=<REVISION_NUMBER>**
 
-```
+```bash
 kubectl rollout history deployment/<DEPLOYMENT> --revision=2
 ```
 
 Após escolher uma revision de destino para realizar o rollback, executamos
 
-```
+```bash
 kubectl rollout undo deployment/<DEPLOYMENT> --to-revision=<REVISION_NUMBER>
 ```
 
 Pronto! Para verificar o progresso das mudanças, executar 
 
-```
+```bash
 kubectl rollout status deployment/<DEPLOYMENT>
 ```
 
@@ -461,13 +461,13 @@ metadata:
 
 alternativamente, podemos usar o comando 
 
-```
+```bash
 kubectl create namespace <insert-namespace-name-here>
 ```
 
 # Listando namespaces disponíveis
 
-```
+```bash
 kubectl get namespaces
 ```
 
@@ -475,7 +475,7 @@ kubectl get namespaces
 
 Caso tenhamos um recurso em um arquivo yaml, e queiramos inserí-lo em um namespace, usamos o seguinte comando
 
-```
+```bash
 kubectl apply -f=<ARQUIVO> -n=<NAMESPACE>
 ```
 
@@ -495,13 +495,13 @@ spec:
 
 Para buscar Pods, Deployments, ou qualquer outro recurso em um namespace, podemos executar o comando
 
-```
+```bash
 kubectl get pods -n=<NAMESPACE>
 ```
 
 Para buscar recursos de todos os namespaces, podemos executar
 
-```
+```bash
 kubectl get pods --all-namespaces
 ```
 
@@ -515,13 +515,13 @@ sudo su -
 
 Executar
 
-```
+```bash
 kubectl completion bash > /etc/bash_completion.d/kubectl
 ```
 
 Para não precisar reiniciar o terminal, executar
 
-```
+```bash
 source <(kubectl completion bash)
 ```
 
@@ -535,7 +535,7 @@ Cada recurso oferece diferentes informações
 
 Podemos especificar o formato de saída (yaml, json, wide, etc...) ao usar o comando **kubectl get ...** com a flag **-o \<FORMATO>**
 
-```
+```bash
 kubectl get deployment/my-dep -o <FORMATO>
 ```
 
@@ -639,7 +639,7 @@ spec:
 
 O **kubectl exec** funciona de forma exatamente igual ao **docker exec**, com a seguinte sintaxe
 
-```
+```bash
 kubectl exec -it <POD> <COMANDO>
 ```
 
@@ -666,7 +666,7 @@ spec:
 
 Devemos aplicar esse LimitRange em algum namespace. Nesse caso, aplicarei no namespace **alex**
 
-```
+```bash
 kubectl apply -f=limitacao.yaml -n=alex
 ```
 
@@ -738,13 +738,13 @@ spec:
 
 Podemos usar o comando abaixo, substituindo **pod** pelo recurso desejado
 
-```
+```bash
 kubectl label pod spring-app-6985dcbc89-8hbnx projeto=site_markket
 ```
 
 Para **atualizar labels**, basta passar a flag --overwrite
 
-```
+```bash
 kubectl label pod spring-app-6985dcbc89-8hbnx projeto=projeto_governo --overwrite
 ```
 
@@ -752,7 +752,7 @@ kubectl label pod spring-app-6985dcbc89-8hbnx projeto=projeto_governo --overwrit
 
 Basta passar a flag **-l** nos comandos do Kubernetes
 
-```
+```bash
 kubectl get pods -l app=spring-app
 ```
 
@@ -869,3 +869,13 @@ spec:
       maxSurge: 2 ## De quanto em quanto novas Pods serão adicionadas em um update
       maxUnavailable: 3 ## Máximo de contêineres "unavailable" em um update
 ```
+
+# Informações detalhadas do cluster com o kubectl cluster-info
+
+Podemos executar o comando abaixo para encontrar diversas informações do cluster, como CIDR, nodes, etc.
+
+```bash
+kubectl cluster-info dump > myclusterinfo.txt
+```
+
+O redirect será feito para o arquivo **myclusterinfo.txt** e poderemos analisar o output para encontrar as informações desejadas.
