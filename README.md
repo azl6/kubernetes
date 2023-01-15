@@ -836,3 +836,31 @@ spec:
         - name: spring-application
           image: azold6/jenkins-with-spring:jenkins-spring-pipeline-49
 ```
+
+# Exemplo 16 e a utilização do campo strategy
+
+O campo **strategy** é usado para definir a estratégia de atualização de Pods. Sem esse campo, as Pods não são imediatamente substituidas, e devemos usar o comando **kubectl rollout status \<RESOURCE> <RESOURCE_NAME>**.
+
+Esse campo pode ser usado tanto em **Deployments** quanto em **DaemonSets**
+
+```
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-dep
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: spring-app
+  template:
+    metadata:
+      labels:
+        app: spring-app
+    spec:
+      containers:
+        - name: spring-application
+          image: azold6/jenkins-with-spring:jenkins-spring-pipeline-49
+  strategy: ######## Configuração de atualização de Pods
+    type: RollingUpdate 
+```
