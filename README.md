@@ -815,3 +815,24 @@ Algumas implicações importantes:
 
 - O nó master **não deve ter taint** quando rodarmos um DaemonSet, para que a aplicação consiga subir nele. Depois que a aplicação subir no master, **devemos re-aplicar um taint NoSchedule** lá, já que nenhum outro Pod deve ser agendado para lá. 
 - Caso tenhamos subido uma Pod no master, e precisemos atualizar a imagem com o **kubectl set image..**, podemos: Atualizar o DaemonSet, deletar o Pod rodando atualmente no nó master (já que ele não será automaticamente deletado por causa do taint NoSchedule), e automaticamente uma nova Pod será criada no master com a versão mais atual da imagem.
+
+# Exemplo 15 e a criação de um DaemonSet
+
+```yaml
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: my-daemonset
+spec:
+  selector:
+    matchLabels:
+      system: my-system
+  template:
+    metadata:
+      labels:
+        system: my-system
+    spec:
+      containers:
+        - name: spring-application
+          image: azold6/jenkins-with-spring:jenkins-spring-pipeline-49
+```
