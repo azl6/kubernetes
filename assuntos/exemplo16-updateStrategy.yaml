@@ -17,3 +17,6 @@ spec:
           image: azold6/jenkins-with-spring:jenkins-spring-pipeline-49
   strategy: ######## Configuração de atualização de Pods
     type: RollingUpdate 
+    rollingUpdate:
+      maxSurge: 2 ## De quanto em quanto novas Pods serão adicionadas em um update
+      maxUnavailable: 3 ## Máximo de contêineres "unavailable" em um update
