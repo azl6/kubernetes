@@ -806,3 +806,12 @@ São importantes pelos seguintes motivos:
 - **Entendimento do funcionamento de rollouts e do Kubernetes no geral**
 
     Por debaixo dos panos, o **kubectl rollout undo ...** se utiliza de ReplicaSets antigos para realizar o rollback. Da mesma forma, a cada versão nova do Deployment, temos um novo ReplicaSet criado.
+    
+# Utilização do DaemonSet
+
+É utilizado quando precisamos **garantir** que uma aplicação está rodando em todos os nós do cluster.
+
+Algumas implicações importantes:
+
+- O nó master **não deve ter taint** quando rodarmos um DaemonSet, para que a aplicação consiga subir nele. Depois que a aplicação subir no master, **devemos re-aplicar um taint NoSchedule** lá, já que nenhum outro Pod deve ser agendado para lá. 
+- Caso tenhamos subido uma Pod no master, e precisemos atualizar a imagem com o **kubectl set image..**, podemos: Atualizar o DaemonSet, deletar o Pod rodando atualmente no nó master (já que ele não será automaticamente deletado por causa do taint NoSchedule), e automaticamente uma nova Pod será criada no master com a versão mais atual da imagem.
