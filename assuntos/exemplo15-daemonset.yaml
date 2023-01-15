@@ -1,0 +1,16 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: my-daemonset
+spec:
+  selector:
+    matchLabels:
+      system: my-system
+  template:
+    metadata:
+      labels:
+        system: my-system
+    spec:
+      containers:
+        - name: spring-application
+          image: azold6/jenkins-with-spring:jenkins-spring-pipeline-49
