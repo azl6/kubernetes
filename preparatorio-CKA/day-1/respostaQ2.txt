@@ -1,0 +1,3 @@
+Executar 
+
+kubectl scale -n=strigus deployment girus --replicas=3 

@@ -1,0 +1,4 @@
+Executar
+
+kubectl set image pod giropops <NOME_CONTAINER>=nginx:1.21.1 
+

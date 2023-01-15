@@ -1,0 +1,10 @@
+# Questão 1 
+Criar um Pod utilizando a imagem do Nginx 1.18.0 com o nome giropops no namespace strigus
+
+# Questão 2
+Aumentar a quantidade de replicas do deployment girus, que está utilizando a imagem do 
+nginx 1.18.0, para 3 replicas. O deployment está no namespace strigus
+
+# Questão 3 
+Atualizar a versão do nginx do Pod giropops. Ele está na versão 1.18.0 e precisamos atualizar
+para a 1.21.1
