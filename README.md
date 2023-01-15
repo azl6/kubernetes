@@ -843,7 +843,7 @@ O campo **strategy** é usado para definir a estratégia de atualização de Pod
 
 Esse campo pode ser usado tanto em **Deployments** quanto em **DaemonSets**
 
-```
+```yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
