@@ -843,6 +843,8 @@ O campo **strategy** é usado para definir a estratégia de atualização de Pod
 
 Esse campo pode ser usado tanto em **Deployments** quanto em **DaemonSets**
 
+**Obs:** **maxSurge** e **maxUnavailable** podem ser informados por porcentagem (5%, 10%...)
+
 ```yaml
 apiVersion: apps/v1
 kind: Deployment
@@ -863,4 +865,7 @@ spec:
           image: azold6/jenkins-with-spring:jenkins-spring-pipeline-49
   strategy: ######## Configuração de atualização de Pods
     type: RollingUpdate 
+    rollingUpdate:
+      maxSurge: 2 ## De quanto em quanto novas Pods serão adicionadas em um update
+      maxUnavailable: 3 ## Máximo de contêineres "unavailable" em um update
 ```
