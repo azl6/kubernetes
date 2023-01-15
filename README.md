@@ -837,7 +837,7 @@ spec:
           image: azold6/jenkins-with-spring:jenkins-spring-pipeline-49
 ```
 
-# Exemplo 16 e a utilização do campo strategy
+# Exemplo 16 e a utilização do campo strategy para definir comportamento em update de imagem em Pods
 
 O campo **strategy** é usado para definir a estratégia de atualização de Pods. Sem esse campo, as Pods não são imediatamente substituidas, e devemos usar o comando **kubectl rollout status \<RESOURCE> <RESOURCE_NAME>**.
 
