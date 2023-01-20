@@ -880,7 +880,7 @@ kubectl cluster-info dump > myclusterinfo.txt
 
 O redirect será feito para o arquivo **myclusterinfo.txt** e poderemos analisar o output para encontrar as informações desejadas.
 
-# COmo encontrar arquivos armazenados nos volumes criados
+# Como encontrar arquivos armazenados nos volumes criados
 
 Por enquanto, isso funciona para o volume emptyDir.
 
