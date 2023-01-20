@@ -801,7 +801,7 @@ São importantes pelos seguintes motivos:
 
 - **Verificação de logs caso alguma pod não seja criada de forma bem-sucedida**
     
-    Passei por uma situação onde havia um LimitRange aplicado ao namespace. Ao tentar criar Pods com requests de recursos acima do limite estabelecido no LimitRange, **não recebia nenhum log na CLI** (como acontece de costume quando os limits e requests são definidos em um só manifesto). Só consegui consultar tais logs através do ReplicaSet, com o **kubectl describe replicaset my-replicaset**
+    Passei por uma situação onde havia um LimitRange aplicado ao namespace. Ao tentar criar Pods com requests de recursos acima do limite estabelecido no LimitRange, **não recebia nenhum log na CLI** (como acontece de costume quando os limits e requests são definidos em um só Deployment/manifesto). Só consegui consultar tais logs através do ReplicaSet, com o **kubectl describe replicaset my-replicaset**
     
 - **Entendimento do funcionamento de rollouts e do Kubernetes no geral**
 
