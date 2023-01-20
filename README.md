@@ -198,7 +198,7 @@ spec:
 
 # Explicação sobre os tipos de volumes e persistent volumes
 
-**emptyDir** - Fica vinculado a uma Pod, ou seja, não morre enquanto a Pod existir, mas se a Pod for substituida, o volume "reinicia" (fica fazio novamente). Usado somente quando precisamos de dados temporários <br>
+**emptyDir** - Nasce "junto" com um pod, vazio. Fica vinculado a uma Pod, ou seja, não morre enquanto a Pod existir, mas se a Pod for substituida, o volume "reinicia" (fica fazio novamente). Usado somente quando precisamos de dados temporários <br>
 **hostPath** - Funciona exatamente como um bind-mount. Escolhe um caminho na máquina host para "bindar" a um caminho dentro de um worker-node (Confirmar isso!).
 **Persistent Volumes** - São volumes independentes de Pods e worker-nodes. Eles usam outros volumes para funcionar. Para que uma Pod possa utilizá-lo, ela deve usar um **Persistent Volume Claim**
 
