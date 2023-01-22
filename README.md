@@ -952,11 +952,25 @@ Podemos criar um secret a partir de:
 
 - Files (--from-file=)
 - Env files (--from-env-file=)
-- Literal (não sei o que é)
+- Literal (--from-literal=)
 
 ```bash
 kubectl create secret generic <SECRET_NAME> <FLAG_FROM_ACIMA>
 ```
+
+**Exemplos:**
+
+- Criando secret a partir de um arquivo
+  
+  ```bash
+  kubectl create secret generic my-file-secret --from-file=myfile.txt
+  ```
+  
+- Criando secret a partir de **literals**
+  
+  ```bash
+  kubectl create secret generic my-literal-secret --from-literal usuario=alex --from-literal senha=123
+  ```
 
 # Exemplo 19 e montando secrets como volumes
 
