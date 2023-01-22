@@ -903,3 +903,26 @@ Depois, buscar pelo nome do volume criado
 ```
 find . -iname "<VOLUME_NAME>"
 ```
+
+# Exemplo 18 e a criação de CronJobs
+
+```yaml
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: giropops-cron
+spec:
+  schedule: "*/1 * * * *" ########### Definição do cron
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: giropops-cron
+            image: busybox ########## BusyBox utilizado para a execução de comandos
+            args:
+            - /bin/sh ############### Argumentos do que será executado
+            - -c
+            - date; echo Bem Vindo ao Descomplicando Kubernetes - LinuxTips VAIIII ;sleep 30
+          restartPolicy: OnFailure
+```
