@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fileupload-dep
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fileupload
+  template:
+    metadata:
+      labels:
+        app: fileupload
+    spec:
+      containers:
+        - name: fileupload-app
+          image: azold6/fileupload-pv-pvc:latest
+          env:
+            - name: UPLOADED_FILES_DIR
+              valueFrom:
+                configMapKeyRef:
+                  key: FILE_UPLOAD_DIR
+                  name: my-configmap
+          resources:
+            limits:
+              cpu: "0.5"
+              memory: 512Mi 
+            requests:
+              cpu: "0.25"
+              memory: 256Mi 
+          livenessProbe:
+            httpGet:
+              path: /actuator/health/liveness
+              port: 8080  
+            initialDelaySeconds: 10
+            periodSeconds: 30
+          volumeMounts:
+            - mountPath: /tmp/client-nfs
+              name: nfs-volume
+      volumes:
+        - name: nfs-volume
+          persistentVolumeClaim:
+            claimName: my-nfs-claim
