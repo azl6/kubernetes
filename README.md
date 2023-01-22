@@ -8,6 +8,14 @@ O minikube é uma "VMzinha" que simula um cluster Kubernetes, sem inúmeros work
 - **minikube delete** – Deleta a VM criada.
 - **minikube dashboard** – Abre uma aba no browser com um dashboard do Kubernetes.
 
+# Pingando o host do minikube
+
+Podemos pingar e referenciar o host do minikube com o DNS **host.minikube.internal**, da mesma forma que utilizávamos o **host.docker.internal** no Docker
+
+```bash
+ping host.minikube.internal
+```
+
 # Listando recursos com o kubectl get
 
 ```bash
