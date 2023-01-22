@@ -938,3 +938,29 @@ Podemos criar um secret a partir de:
 ```bash
 kubectl create secret generic <SECRET_NAME> <FLAG_FROM_ACIMA>
 ```
+
+# Exemplo 19 e montando secrets como volumes
+
+É possível "montar" secrets como se eles fossem volumes, da mesma forma que montamos emptyDir, hostPath, nfs, etc...
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-pod
+spec:
+  containers:
+    - name: busybox
+      image: busybox
+      command:
+        - sleep
+        - "3600"
+      volumeMounts:
+        - name: secret-volume 
+          mountPath: /tmp/secretVolume
+  volumes:
+    - name: secret-volume
+      secret:
+        secretName: my-secret
+```
+
