@@ -3,8 +3,8 @@ kind: CronJob
 metadata:
   name: giropops-cron
 spec:
-  schedule: "*/1 * * * *"
-  jobTemplate:
+  schedule: "*/1 * * * *" # Definição do cron
+  jobTemplate: # Template com o que será rodado
     spec:
       template:
         spec:

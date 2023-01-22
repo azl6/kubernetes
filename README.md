@@ -904,6 +904,25 @@ Depois, buscar pelo nome do volume criado
 find . -iname "<VOLUME_NAME>"
 ```
 
+# Exemplo 18 e a utilização de um NFS em um volume
+
+```yaml
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: nfs-pv
+spec:
+  storageClassName: standard
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  nfs: # Definição do NFS
+    path: /tmp/nfs-server
+    readOnly: false
+    server: host.minikube.internal
+```
+
 # Exemplo 18 e a criação de CronJobs
 
 ```yaml
@@ -912,8 +931,8 @@ kind: CronJob
 metadata:
   name: giropops-cron
 spec:
-  schedule: "*/1 * * * *"
-  jobTemplate:
+  schedule: "*/1 * * * *" # Definição do cron
+  jobTemplate: # Template com o que será rodado
     spec:
       template:
         spec:
@@ -960,7 +979,7 @@ spec:
           mountPath: /tmp/secretVolume
   volumes:
     - name: secret-volume
-      secret:
+      secret: # Um secret pode ser montado como se fosse um emptyDir, hostPath, nfs, etc.
         secretName: my-secret
 ```
 

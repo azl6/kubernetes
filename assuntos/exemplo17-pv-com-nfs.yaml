@@ -8,7 +8,7 @@ spec:
     storage: 1Gi
   accessModes:
     - ReadWriteOnce
-  nfs:
+  nfs: # Definição do NFS
     path: /tmp/nfs-server
     readOnly: false
     server: host.minikube.internal
