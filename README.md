@@ -926,3 +926,15 @@ spec:
             - date; echo Bem Vindo ao Descomplicando Kubernetes - LinuxTips VAIIII ;sleep 30
           restartPolicy: OnFailure
 ```
+
+# Criando um secret com a CLI
+
+Podemos criar um secret a partir de:
+
+- Files (--from-file=)
+- Env files (--from-env-file=)
+- Literal (não sei o que é)
+
+```bash
+kubectl create secret generic <SECRET_NAME> <FLAG_FROM_ACIMA>
+```
