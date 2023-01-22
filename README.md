@@ -1000,3 +1000,36 @@ spec:
         secretName: my-secret
 ```
 
+# Exemplo 20 e referenciando secrets com o valueFrom secretKeyRef
+
+É uma forma de referenciar secrets literals, que são key-value.
+
+Nesse exemplo, uma secret de um literal foi referenciada. Para mais informações de uma literal secret, consultar o tópico [Criando um secret com a CLI](#criando-uma-secret-com-a-cli)
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-pod
+spec:
+  containers:
+    - name: busybox
+      image: busybox
+      command:
+        - sleep
+        - "3000"
+      env:
+      - name: USERNAME
+        valueFrom: # Definindo que a env vem de uma secret
+          secretKeyRef:
+            name: my-literal-secret # Nome da secret
+            key: usuario # Chave da literal secret
+      - name: HELLO
+        valueFrom:
+          secretKeyRef:
+            name: my-literal-secret
+            key: senha
+```
+
+
+
