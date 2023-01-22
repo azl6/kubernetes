@@ -907,21 +907,21 @@ find . -iname "<VOLUME_NAME>"
 # Exemplo 18 e a criação de CronJobs
 
 ```yaml
-apiVersion: batch/v1beta1
+apiVersion: batch/v1
 kind: CronJob
 metadata:
   name: giropops-cron
 spec:
-  schedule: "*/1 * * * *" ########### Definição do cron
+  schedule: "*/1 * * * *"
   jobTemplate:
     spec:
       template:
         spec:
           containers:
           - name: giropops-cron
-            image: busybox ########## BusyBox utilizado para a execução de comandos
+            image: busybox
             args:
-            - /bin/sh ############### Argumentos do que será executado
+            - /bin/sh
             - -c
             - date; echo Bem Vindo ao Descomplicando Kubernetes - LinuxTips VAIIII ;sleep 30
           restartPolicy: OnFailure
