@@ -904,7 +904,7 @@ Depois, buscar pelo nome do volume criado
 find . -iname "<VOLUME_NAME>"
 ```
 
-# Exemplo 18 e a utilização de um NFS em um volume
+# Exemplo 17 e a utilização de um NFS em um PersistentVolume
 
 ```yaml
 apiVersion: v1
