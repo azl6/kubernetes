@@ -1025,7 +1025,7 @@ spec:
             name: my-literal-secret # Nome da secret
             key: usuario # Chave da literal secret
       - name: HELLO
-        valueFrom:
+        valueFrom: # Mesma coisa da outra env...
           secretKeyRef:
             name: my-literal-secret
             key: senha
