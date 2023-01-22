@@ -971,6 +971,9 @@ kubectl create secret generic <SECRET_NAME> <FLAG_FROM_ACIMA>
   ```bash
   kubectl create secret generic my-literal-secret --from-literal usuario=alex --from-literal senha=123
   ```
+  
+  ![image](https://user-images.githubusercontent.com/80921933/213944675-34b322d0-bb27-4d65-93cf-01144ee42350.png)
+
 
 # Exemplo 19 e montando secrets como volumes
 
