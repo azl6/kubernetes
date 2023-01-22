@@ -404,6 +404,10 @@ spec:
                   key: hello # Key name inside my ConfigMap
 ```
 
+# Puxando todas as envs de um ConfigMap com o envFrom
+
+COMPLETAR
+
 # Comunicação entre dois contêineres na mesma Pod
 
 Exemplo de dois contêineres na mesma Pod:
