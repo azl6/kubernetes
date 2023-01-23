@@ -1047,11 +1047,40 @@ spec:
             key: senha
 ```
 
-# Criando serviceaccounts
+# Criando Service-Accounts
 
 ```
 kubectl create serviceaccount <SERVICEACCOUNT_NAME>
 ```
+
+# Listando e detalhando Cluster-Roles
+
+**Cluster Roles** são permissões do cluster, agrupadas. Por exemplo, a role **cluster-admin** pode fazer tudo (criar recursos, deletar recursos, etc...)
+
+```
+kubectl get clusterroles
+```
+
+![image](https://user-images.githubusercontent.com/80921933/213954193-31700600-8bec-401a-a54b-ac2efba3d7bd.png)
+
+
+Também podemos descrever uma Cluster-Role com o comando:
+
+```
+kubectl describe clusterrole <CLUSTERROLE_NAME>
+```
+
+![image](https://user-images.githubusercontent.com/80921933/213954216-c699ce91-e8b0-43a7-8171-69e82047edb9.png)
+
+# Listando Cluster-Role-Bindings
+
+São vínculos de roles a usuários
+
+```
+kubectl get clusterrolebindings
+```
+
+Também é possível descrevê-los com o **describe**
 
 
 
