@@ -1047,5 +1047,11 @@ spec:
             key: senha
 ```
 
+# Criando serviceaccounts
+
+```
+kubectl create serviceaccount <SERVICEACCOUNT_NAME>
+```
+
 
 
