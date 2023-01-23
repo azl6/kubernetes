@@ -1096,4 +1096,33 @@ Exemplo:
 k create clusterrolebinding alex_virou_admin --serviceaccount=default:alex --clusterrole=cluster-admin
 ```
 
+# Exemplo 22 e Criando um ServiceAccount via yaml
+
+```yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: admin-user ########## Nome e namespace
+  namespace: kube-system #### do service-account
+```
+
+# Exemplo 23 e Criando um ClusterRoleBinding para vincular contas e roles via yaml
+
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRoleBinding
+metadata:
+  name: admin-user
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole ################# Informando o cluster-role
+  name: cluster-admin ############### a ser bindado
+subjects:
+- kind: ServiceAccount ############## Informando o service-account
+  name: admin-user ################## a ser bindado
+  namespace: kube-system ############ e seu namespace
+```
+
+
+
 
