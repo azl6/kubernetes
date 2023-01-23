@@ -404,9 +404,21 @@ spec:
                   key: hello # Key name inside my ConfigMap
 ```
 
-# Puxando todas as envs de um ConfigMap com o envFrom
+# Exemplo 21 e puxando todas as envs de um ConfigMap com o envFrom
 
-COMPLETAR
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-pod
+spec:
+  containers:
+    - name: busybox
+      image: busybox
+      envFrom: ###################### Podemos puxar todas as envs
+        - configMapRef:             # contidas em um ConfigMap 
+            name: my-configmap ###### de uma só vez com o envFrom
+```
 
 # Comunicação entre dois contêineres na mesma Pod
 
@@ -1028,7 +1040,7 @@ spec:
           secretKeyRef:
             name: my-literal-secret # Nome da secret
             key: usuario # Chave da literal secret
-      - name: HELLO
+      - name: PASSWORD
         valueFrom: # Mesma coisa da outra env...
           secretKeyRef:
             name: my-literal-secret
