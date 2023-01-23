@@ -1049,6 +1049,8 @@ spec:
 
 # Criando Service-Accounts
 
+Um service-account é uma conta no cluster, que possui permissões (roles).
+
 ```
 kubectl create serviceaccount <SERVICEACCOUNT_NAME>
 ```
@@ -1074,7 +1076,7 @@ kubectl describe clusterrole <CLUSTERROLE_NAME>
 
 # Listando Cluster-Role-Bindings
 
-São vínculos de roles a usuários
+São vínculos de roles a service-accounts.
 
 ```
 kubectl get clusterrolebindings
@@ -1082,5 +1084,16 @@ kubectl get clusterrolebindings
 
 Também é possível descrevê-los com o **describe**
 
+# Vinculando um service-account a uma cluster-role com um cluster-role-binding
+
+Estrutura do comando:
+```bash
+kubectl create clusterrolebinding <NOME_CLUSTERROLEBINDING> --serviceaccount=<SA_NAMESPACE>:<SA_NAME> --clusterrole=<ROLE_NAME>
+```
+
+Exemplo:
+```bash
+k create clusterrolebinding alex_virou_admin --serviceaccount=default:alex --clusterrole=cluster-admin
+```
 
 
