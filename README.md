@@ -1214,3 +1214,19 @@ Nesse exemplo, usei o nome **exemplo1** para o chart. Será criada uma estrutura
   Tal valor será substituído pelo que se encontra no arquivo **Chart**, no campo **name**
   
   ![image](https://user-images.githubusercontent.com/80921933/214375464-7d6e3175-72de-4414-8046-ad70a36fabba.png)
+  
+- `values.yaml`
+
+  Trata-se de onde a maioria das variáveis "substituíveis" do `deployment.yaml` estarão
+  
+Finalmente, para criarmos o helm-chart com os valores customizados, executamos:
+
+```bash
+helm install <NOME_CHART> <CAMINHO_HELMCREATE> --values <CAMINHO_DO_VALUESPONTOYAML>
+```
+
+Em nosso exemplo, como nomeamos nosso chart de **exemplo1** no **helm create...**, executaremos (uma pasta acima do diretório gerado pelo **helm create**):
+
+```
+helm install exemplo1 exemplo1/ --values exemplo1/values.yaml
+```
