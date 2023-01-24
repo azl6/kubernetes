@@ -1156,6 +1156,16 @@ helm repo update
 ```bash
 helm install bitnami/mysql --generate-name
 ```
+# Desinstalando um chat
 
+Para isso, primeiramente, devemos encontrar o nome do chat que desejamos desinstalar, com o **helm ls**
+
+![image](https://user-images.githubusercontent.com/80921933/214358903-33c8177b-cc14-4a2f-921c-082e76ab3152.png)
+
+Nesse caso, o nome é **mysql-1674579050**. Com essa informação, basta rodar:
+
+```
+helm unninstall mysql-1674579050
+```
 
 
