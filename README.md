@@ -1137,26 +1137,26 @@ subjects:
 helm repo add bitnami https://charts.bitnami.com/bitnami
 ```
 
-# Buscando repos com o adicionado
+# Buscando repositórios disponíveis
 
-Neste caso, bitnami foi o nome que dei ao repo no passo acima
+Neste caso, bitnami foi o nome que dei ao repositório no passo acima
 
 ```bash
 helm search repo bitnami
 ```
 
-# Atualizando o repo adicionado
+# Atualizando o repositório adicionado
 
 ```bash
 helm repo update
 ```
 
-# Instalando um chart de exemplo
+# Instalando um chart
 
 ```bash
 helm install bitnami/mysql --generate-name
 ```
-# Desinstalando um chat
+# Desinstalando um chart
 
 Para isso, primeiramente, devemos encontrar o nome do chat que desejamos desinstalar, com o **helm ls**
 
@@ -1167,5 +1167,9 @@ Nesse caso, o nome é **mysql-1674579050**. Com essa informação, basta rodar:
 ```
 helm unninstall mysql-1674579050
 ```
+# Printando detalhes de um chart
 
+```
+helm status <CHART_NAME>
+```
 
