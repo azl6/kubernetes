@@ -1231,6 +1231,24 @@ helm install <NOME_CHART> <CAMINHO_HELMCREATE> --values <CAMINHO_DO_VALUESPONTOY
 
 Em nosso exemplo, como nomeamos nosso chart de **exemplo1** no **helm create...**, executaremos (uma pasta acima do diretório gerado pelo **helm create**):
 
-```
+```bash
 helm install exemplo1 exemplo1/ --values exemplo1/values.yaml
+```
+
+Pronto!
+
+# Atualizando helm-charts
+
+Ao realizar mudanças em um **helm-chart**, devemos subir o campo **version** do **Chart.yaml**.
+
+Depois, basta executar:
+
+```
+helm upgrade <NOME_CHART> <CAMINHO_HELMCREATE> --values <CAMINHO_DO_VALUESPONTOYAML>
+```
+
+# Realizando um rollback de um helm-chart para outra revisão
+
+```
+helm rollback <NOME_CHART> <REVISION_NUMBER>
 ```
