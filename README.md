@@ -1197,6 +1197,8 @@ Nesse exemplo, usei o nome **exemplo1** para o chart. Será criada uma estrutura
 
 ![image](https://user-images.githubusercontent.com/80921933/214372349-1ce43289-529e-4a75-b494-7e5e61f8f6d5.png)
 
+<br>
+
 **Explicações dos arquivos:**
 
 - `Chart.yaml`:
@@ -1218,6 +1220,8 @@ Nesse exemplo, usei o nome **exemplo1** para o chart. Será criada uma estrutura
 - `values.yaml`
 
   Trata-se de onde a maioria das variáveis "substituíveis" do `deployment.yaml` estarão
+  
+<br>
   
 Finalmente, para criarmos o helm-chart com os valores customizados, executamos:
 
