@@ -1185,4 +1185,32 @@ Exemplo:
 helm show chart bitnami/mysql
 ```
 
+# Criando um helm chart
 
+Executar
+
+```bash
+helm create <CHART_NAME>
+```
+
+Nesse exemplo, usei o nome **exemplo1** para o chart. Será criada uma estrutura de pastas, da seguinte forma:
+
+![image](https://user-images.githubusercontent.com/80921933/214372349-1ce43289-529e-4a75-b494-7e5e61f8f6d5.png)
+
+**Explicações dos arquivos:**
+
+- `Chart.yaml`:
+  
+  É onde os metadados do seu chart ficarão, como versão do chart, versão da aplicação ,descrição, mantenedores, etc...
+  
+- `templates/deployment.yaml`
+
+  Funciona exatamente como um deployment padrão usado no Kubernetes, porém, com substituição de valores utilizando chaves duplas 
+  
+  Um exemplo é o seguinte: Dentro do **deployment.yaml**, temos a seção **spec.template.spec.containers.name**. Em seu preenchimento, consta o seguinte valor:
+  
+  ![image](https://user-images.githubusercontent.com/80921933/214375273-4bc91455-9eb2-4b8b-8547-1434da84ce5c.png)
+
+  Tal valor será substituído pelo que se encontra no arquivo **Chart**, no campo **name**
+  
+  ![image](https://user-images.githubusercontent.com/80921933/214375464-7d6e3175-72de-4414-8046-ad70a36fabba.png)
