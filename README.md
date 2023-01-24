@@ -1243,12 +1243,12 @@ Ao realizar mudanças em um **helm-chart**, devemos subir o campo **version** do
 
 Depois, basta executar:
 
-```
+```bash
 helm upgrade <NOME_CHART> <CAMINHO_HELMCREATE> --values <CAMINHO_DO_VALUESPONTOYAML>
 ```
 
 # Realizando um rollback de um helm-chart para outra revisão
 
-```
+```bash
 helm rollback <NOME_CHART> <REVISION_NUMBER>
 ```
