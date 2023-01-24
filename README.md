@@ -1249,6 +1249,14 @@ helm upgrade <NOME_CHART> <CAMINHO_HELMCREATE> --values <CAMINHO_DO_VALUESPONTOY
 
 # Realizando um rollback de um helm-chart para outra revisão
 
+Podemos listar todas as revisões com o comando
+
+```bash
+helm history <NOME_CHART>
+```
+
+Após escolher a revisão, basta executar:
+
 ```bash
 helm rollback <NOME_CHART> <REVISION_NUMBER>
 ```
