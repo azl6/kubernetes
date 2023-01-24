@@ -1137,5 +1137,17 @@ Neste caso, bitnami foi o nome que dei ao repo no passo acima
 helm search repo bitnami
 ```
 
+# Atualizando o repo adicionado
+
+```bash
+helm repo update
+```
+
+# Instalando um chart de exemplo
+
+```bash
+helm install bitnami/mysql --generate-name
+```
+
 
 
