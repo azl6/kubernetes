@@ -1123,6 +1123,11 @@ subjects:
   namespace: kube-system ############ e seu namespace
 ```
 
+# Adicionando um repositório para os helm-charts
+
+```bash
+helm repo add bitnami https://charts.bitnami.com/bitnami
+```
 
 
 
