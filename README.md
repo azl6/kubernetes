@@ -1129,5 +1129,13 @@ subjects:
 helm repo add bitnami https://charts.bitnami.com/bitnami
 ```
 
+# Buscando repos com o adicionado
+
+Neste caso, bitnami foi o nome que dei ao repo no passo acima
+
+```bash
+helm search repo bitnami
+```
+
 
 
