@@ -531,6 +531,12 @@ kubectl get pods --all-namespaces
 
 # Habilianto o auto completion para comandos do Kubernetes
 
+**Update:** Tive problemas com os passos abaixo. Alternativamente, é possível usar o seguinte tutorial: 
+
+https://spacelift.io/blog/kubectl-auto-completion
+
+-------------Tutorial antigo-------------
+
 Trocar para o root user
 
 ```
@@ -548,6 +554,8 @@ Para não precisar reiniciar o terminal, executar
 ```bash
 source <(kubectl completion bash)
 ```
+
+-------------Tutorial antigo-------------
 
 # Detalhando recursos com o kubectl describe
 
