@@ -1164,12 +1164,25 @@ Para isso, primeiramente, devemos encontrar o nome do chat que desejamos desinst
 
 Nesse caso, o nome é **mysql-1674579050**. Com essa informação, basta rodar:
 
-```
+```bash
 helm unninstall mysql-1674579050
 ```
-# Printando detalhes de um chart
+# Printando a tela inicial ao iniciar um chart
 
-```
+```bash
 helm status <CHART_NAME>
 ```
+
+# Printando detalhes de um chart
+
+```bash
+helm show chart <REPO_NAME>/<CHART_NAME>
+```
+
+Exemplo:
+
+```bash
+helm show chart bitnami/mysql
+```
+
 
