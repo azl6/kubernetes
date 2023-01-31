@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-fileupload
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fileupload
+  template:
+    metadata:
+      labels:
+        app: fileupload
+    spec:
+      containers:
+        - image: azold6/fileupload-pv-pvc
+          name: fileupload-container
+          env:
+            - name: UPLOADED_FILES_DIR
+              valueFrom:
+                configMapKeyRef:
+                  key: DIR_PARA_UPLOAD_ARQUIVOS
+                  name: my-configmap
+          volumeMounts:
+            - mountPath: /tmp/uploaded_files
+              name: volume
+          resources:
+            limits:
+              memory: 512Mi
+              cpu: 500m
+            requests:
+              memory: 256Mi
+              cpu: 250m
+          livenessProbe:
+            httpGet:
+              path: /actuator/health/liveness
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 5
+      volumes:
+        - name: "volume"
+          persistentVolumeClaim:
+            claimName: my-pvc
+                
+
