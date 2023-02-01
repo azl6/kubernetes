@@ -1260,3 +1260,11 @@ Após escolher a revisão, basta executar:
 ```bash
 helm rollback <NOME_CHART> <REVISION_NUMBER>
 ```
+
+# Diferenças ClusterIP, NodePort e LoadBalancer
+
+Ao criar um Service, podemos declarar esses três tipos de "exposição":
+
+**ClusterIP:** Gera um IP acessível dentro do cluster
+**NodePort:** Gera uma porta (range 30000-32767) em todos os worker-nodes para expor Pods para o mundo externo
+**LoadBalancer:** Gera um IP publicamente acessível em cloud-providers
