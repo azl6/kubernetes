@@ -1,0 +1,7 @@
+1 - Criar as duas aplicações
+2 - Criar 1 Deployment para o nginx-ingress-controller
+3 - Criar 1 ConfigMap com o nome nginx-configuration para reter as configurações do Nginx. Passar o ConfigMap nos args do Deployment
+4 - Criar um Service para expor o deployment nginx-ingress-controller, portas 80 e 443
+5 - Criar um ServiceAccount para o Nginx Controller, bindando às permissões corretas
+
+
