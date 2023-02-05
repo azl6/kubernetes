@@ -47,6 +47,10 @@ Importante: Nessa etapa, precisamos liberar inbound-rules na porta 6443 do SG do
 
 Basta executar o join gerado nos worker-nodes.
 
+Caso tenhamos perdido o comando de join, executar:
+
+sudo kubeadm token create --print-join-command
+
 8. A rede do Kubernetes
 
 Para instalar o Weave-net no cluster, usar o seguinte comando:
