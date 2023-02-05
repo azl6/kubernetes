@@ -1,0 +1,52 @@
+1. Configuração de módulos e parametrização de kernel - Copiar
+2. Atualização da distribuição - Copiar
+3. Instalando e configurando o containerd:
+
+Instalei o docker com o sudo amazon-linux-extras install docker
+
+Depois, inicializei o docker com o sudo service docker start.
+
+Note que, antes desse comando, o arquivo docker.sock e containerd.sock não existiam. 
+
+Ele foi criado ao inicializar o serviço.
+
+Precisaremos desse arquivo mais para frente.
+
+4. Instalando o kubeadm:
+
+Como EC2 é RedHat, usei o tutorial de: 
+
+https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/
+
+Depois, executei o:
+
+sudo swapoff -a
+
+E também o:
+
+sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
+
+Reiniciar as instâncias.
+
+5. Inicialização do cluster
+
+Na hora de executar o kubeadm init, podemos ignorar as flags informadas no tutorial. Ou seja, basta executar só kubeadm init mesmo.
+
+O kubeadm init, ao rodar em uma instância t2.micro (ou em qualquer outra que não atinja os requisitos pedidos pelo Kubernetes de 2 CPU e RAM) irá reclamar que a máquina não possui o hardware necessário.
+
+Para ignorar tais erros, basta adicionar as flags: --ignore-preflight-errors=NumCPU e --ignore-preflight-errors=Mem no kubeadm init.
+
+
+6. Configuração do arquivo de contextos do kubectl
+
+Copiar.
+
+7. Inserindo os nós workers no cluster
+
+Importante: Nessa etapa, precisamos liberar inbound-rules na porta 6443 do SG do Master Node para os IP's dos Worker Nodes. 
+
+Basta executar o join gerado nos worker-nodes.
+
+8. A rede do Kubernetes
+
+Copiar. Nesse exemplo, ele usa o Weave-net. Na dúvida, usar ele mesmo.
