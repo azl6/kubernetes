@@ -1,0 +1,24 @@
+Vídeo 1:
+
+Criei 2 Deployment e 2 Services da aplicação.
+Rodei curl nos endpoints e confirmei que eles trazem a página HTML do NGINX
+
+Vídeo 2:
+
+Criei o Deployment do default-backend
+Criei o namespace "ingress" e deployei o default-backend nele
+Criei o Service do default-backend e deployei ele no namespace "ingress"
+Criei o ConfigMap do ingress-controller para armazenar suas configurações. Foi definida a configuração enable-vts para trazer informações no browser.
+Deployei o ConfigMap do ingress-controller no namespace "ingress"
+
+Vídeo 3:
+
+Criei o ServiceAccount nginx
+Criei um ClusterRole para o nginx
+Criei um ClusterRoleBinding para vincular o ServiceAccount ao ClusterRole
+Deployei tudo isso no namespace ingress
+Criei o Deployment do nginx-ingress-controller
+Deployei o Deployment do nginx-ingress-controller no namespace "ingress"
+Criei um Ingress para o nginx e deployei no namespace "ingress"
+Criei um Ingress para a aplicação e deployei no namespace "default"
+Criei um Service para o nginx-ingress-controller no namespace "ingress"
