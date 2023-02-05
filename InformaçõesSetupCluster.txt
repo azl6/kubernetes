@@ -54,3 +54,5 @@ Para instalar o Weave-net no cluster, usar o seguinte comando:
 kubectl apply -f https://github.com/weaveworks/weave/releases/download/v2.8.1/weave-daemonset-k8s.yaml
 
 O exemplo dele não funciona. Peguei esse link direto do site do Weave-net: https://www.weave.works/docs/net/latest/kubernetes/kube-addon/
+
+Caso isso ainda dê problema, altere o resolver no /etc/resolver.conf para 8.8.8.8 (Google)
