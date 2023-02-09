@@ -1,5 +1,13 @@
-1 - Criar as duas aplicações
-2 - Criar 1 Deployment para o nginx-ingress-controller
-3 - Criar 1 ConfigMap com o nome nginx-configuration para reter as configurações do Nginx. Passar o ConfigMap nos args do Deployment
-4 - Criar um Service para expor o deployment nginx-ingress-controller, portas 80 e 443
-5 - Criar um ServiceAccount para o Nginx Controller, bindando às permissões corretas
+Criamos os Deployment e Services para o App 1 e App 2
+
+Depois, criamos o Deployment e Service do default-backend (namespace ingress)
+
+Depois, criamos as configurações do nginx-ingress-controller: ServiceAccount, ClusterRole, ClusterRoleBinding,
+ConfigMap e Deployment do nginx-ingress-controller (namespace ingress)
+
+Depois, criamos 2 Ingress: 1 para o nginx e outro para a aplicação
+
+Depois, criamos um Service do tipo NodePort que expõe o Deployment do ingress-controller (com suas labels)
+
+Pronto!
+
