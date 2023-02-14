@@ -3,7 +3,9 @@ Criamos os Deployment e Services para o App 1 e App 2
 Depois, criamos o Deployment e Service do default-backend (namespace ingress)
 
 Depois, criamos as configurações do nginx-ingress-controller: ServiceAccount, ClusterRole, ClusterRoleBinding,
-ConfigMap e Deployment do nginx-ingress-controller (namespace ingress)
+ConfigMap 
+
+Agora, criamos o Deployment do nginx-ingress-controller (namespace ingress)
 
 Depois, criamos 2 Ingress: 1 para o nginx e outro para a aplicação
 

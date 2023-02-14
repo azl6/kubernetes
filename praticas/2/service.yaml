@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-staticsite
+spec:
+  selector:
+    app: static-site
+  type: NodePort
+  ports:
+    - port: 31111
+      targetPort: 80
+      protocol: 'TCP'

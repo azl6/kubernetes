@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deploy1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hello1
+  template:
+    metadata:
+      labels:
+        app: hello1
+    spec:
+      containers:
+        - image: hashicorp/http-echo
+          name: hello1
+          args:
+            - "-text=\"Hello from application 1!\""
+    

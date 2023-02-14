@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deploy-staticsite
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: static-site
+  template:
+    metadata:
+      labels:
+        app: static-site
+    spec:
+      containers:
+        - name: static-site
+          image: dockersamples/static-site
+          env:
+          - name: AUTHOR
+            value: GIROPOPS
