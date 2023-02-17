@@ -1272,12 +1272,12 @@ Ao criar um Service, podemos declarar esses três tipos de "exposição":
 # Criando um Ingress
 
 **Importante**: Para mais detalhes dessa implementação, consultar o diretório `./praticas/refazendo_ingress/`. Ele contém os arquivos usados nessa implementação. Para mais detalhes de como implementar o Ingress "na unha" (criando o deployment, service, configmap, CR, CRB, ServiceAccount, etc...) consultar o arquivo `InformaçõesIngress.txt` 
-I
+
 O **Ingress** é uma forma de expormos nossos services para a internet pública através de um **Ingress Controller**.
 
 **Ingress Controllers** são aplicações que fazem o proxy-reverso do tráfego para que o usuário seja direcionado para o **Service** (e consequentemente **Pods**) correto. Os mais famosos são o **nginx-ingress-controller** e o **haproxy**
 
-IMAGEMSTEFANOAQUI
+![image](https://user-images.githubusercontent.com/80921933/219681298-fca26031-8f84-4072-9e96-0c1f1e17fb9a.png)
 
 No exemplo que será explicado aqui, fizemos uso da instalação do **nginx-ingress-controller** através do **Helm**. É uma instalação tranquila e basta buscar um tutorial na internet. Nesse caso, o **nginx-ingress-controller** é instalado como um **DaemonSet** (roda em todos os nós do Cluster, exceto o master que geralmente tem o taint NoSchedule)
 
