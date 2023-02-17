@@ -1268,3 +1268,54 @@ Ao criar um Service, podemos declarar esses três tipos de "exposição":
 **ClusterIP:** Gera um IP acessível dentro do cluster
 **NodePort:** Gera uma porta (range 30000-32767) em todos os worker-nodes para expor Pods para o mundo externo
 **LoadBalancer:** Gera um IP publicamente acessível em cloud-providers
+
+# Criando um Ingress
+
+**Importante**: Para mais detalhes dessa implementação, consultar o diretório `./praticas/refazendo_ingress/`. Ele contém os arquivos usados nessa implementação. Para mais detalhes de como implementar o Ingress "na unha" (criando o deployment, service, configmap, CR, CRB, ServiceAccount, etc...) consultar o arquivo `InformaçõesIngress.txt` 
+I
+O **Ingress** é uma forma de expormos nossos services para a internet pública através de um **Ingress Controller**.
+
+**Ingress Controllers** são aplicações que fazem o proxy-reverso do tráfego para que o usuário seja direcionado para o **Service** (e consequentemente **Pods**) correto. Os mais famosos são o **nginx-ingress-controller** e o **haproxy**
+
+IMAGEMSTEFANOAQUI
+
+No exemplo que será explicado aqui, fizemos uso da instalação do **nginx-ingress-controller** através do **Helm**. É uma instalação tranquila e basta buscar um tutorial na internet. Nesse caso, o **nginx-ingress-controller** é instalado como um **DaemonSet** (roda em todos os nós do Cluster, exceto o master que geralmente tem o taint NoSchedule)
+
+Depois de executar o `helm install` para instalar o **nginx-ingress-controller**, precisamos criar as regras do nosso **Ingress**. O **Ingress** é uma "extensão" gerada pelo **nginx-ingress-controller** que nos permite descrever as regras de roteamento dele. Com essa fala, quero dizer que a instalação do **nginx-ingress-controller** por si sí não basta. Ainda é necessário definir as regras de roteamento, e essa é a responsabilidade do manifesto do tipo **Ingress**.
+
+O Ingress tem a seguinte cara:
+
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: app-01-ingress
+  namespace: app-01
+  labels:
+    name: app-01-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: app-01.alex.stefanomartins.net ####### DNS Record criado no Route 53
+    http:
+      paths:
+      - path: /app-01 ########################## Para que essa regra seja satisfeita, o usuário deve acessar http://app-01.alex.stefanomartins.net/app-01
+        pathType: Prefix      
+        backend:
+          service:
+            name: app-01-service ############### Nome do service para qual o acesso ao endereço acima direcionará
+            port: 
+              number: 5678 ##################### Porta do serviço para qual o acesso ao endereço acima direcionará
+```
+
+Algumas anotações importantes:
+
+- A primeira é que como nós estamos utilizando uma URI, nós temos que utilizar aquela annotation para que ele faça o rewrite.
+- A segunda pegadinha é que agora é obrigatória a especificação de um host único.
+- A terceira pegadinha é que agora também é obrigatória a especificação da classe do Ingress. Caso contrário, ele retorna um 404.
+
+Depois, considerando que temos um **Deployment** (nesse caso, o **Deployment** utilizava a imagem `hashicorp/http-echo`, que escuta na porta 5678, como mostrado no Ingress) e um **Service** o expondo (mesmo que seja ClusterIP) no namespace `app-1`, basta deployarmos o **Ingress** nesse mesmo namespace.
+
+Considerando que o nosso **DNS Record** no **Route 53** já está apontando para os IP's dos nosso worker-nodes, ao acessar app-01.alex.stefanomartins.net/app-1, devemos ver o conteúdo do nosso **Deployment** exposto.
