@@ -1319,3 +1319,9 @@ Algumas anotações importantes:
 Depois, considerando que temos um **Deployment** (nesse caso, o **Deployment** utilizava a imagem `hashicorp/http-echo`, que escuta na porta 5678, como mostrado no Ingress) e um **Service** o expondo (mesmo que seja ClusterIP) no namespace `app-1`, basta deployarmos o **Ingress** nesse mesmo namespace.
 
 Considerando que o nosso **DNS Record** no **Route 53** já está apontando para os IP's dos nosso worker-nodes, ao acessar app-01.alex.stefanomartins.net/app-1, devemos ver o conteúdo do nosso **Deployment** exposto.
+
+# Criando um cluster com o eksctl
+
+Fonte: https://eksctl.io/
+
+- Se atentar a criação de um usuário IAM com as policies necessárias pra colocá-lo no `aws configure`
