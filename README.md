@@ -1322,7 +1322,31 @@ Considerando que o nosso **DNS Record** no **Route 53** já está apontando para
 
 # Criando um cluster com o eksctl
 
+**Importantíssimo:** Ao subir o cluster no EKS, ele vem direto com a versão 1.24. Ao conectar o `kubectl` local com o cluster, tive problemas se a versão do meu kubectl local não fosse 1.23.6. Para consertar isso, devemos substituir o `kubectl` antigo, com `find / -iname "kubectl" -exec rm {} \;`, e depois seguir o tutorial para instalar o `kubectl` na versão adequada (https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/). Lembrando de se atentar à nota de instalar uma versão específica (1.23.6) no tutorial. Outro detalhe a se atentar é em um conflito entre variáveis de ambiente entre AWS ACCESS KEY, AWS SECRET ACCESS KEY e o arquivo ~/.aws/config. Somente um dos locais deve ser o "source of truth" para o eksctl (de preferência o arquivo).
+
 Fonte: https://eksctl.io/
+
+Para subir o cluster, usei um YAML fornecido pelo próprio eksctl e editei algumas coisas, como instance type (t2.micro)
+
+vim cluster.yaml
+```yaml
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: basic-cluster
+  region: sa-east-1
+
+nodeGroups:
+  - name: ng-1
+    instanceType: t2.micro
+    desiredCapacity: 1
+  - name: ng-2
+    instanceType: t2.micro
+    desiredCapacity: 
+```
+
+Depois, basta rodar `eksctl create cluster -f cluster.yaml`.
 
 Depois de subir o cluster, criamos uma IAM Policy com permissões no R53 (Day 6, Aula 5, Minuto 5:40)
 
