@@ -1334,5 +1334,5 @@ O comando acima resultará no seguinte erro:
 
 ![image](https://user-images.githubusercontent.com/80921933/225822832-60050a95-e0a5-4239-87eb-7a77c265983d.png)
 
-Basta rodarmos o comando que ele pede.
+Basta rodarmos o comando que ele pede, e re-rodar o comando original.
 
