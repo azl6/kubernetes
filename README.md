@@ -1327,5 +1327,5 @@ Fonte: https://eksctl.io/
 Depois de subir o cluster, criamos uma IAM Policy com permissões no R53 (Day 6, Aula 5, Minuto 5:40)
 
 ```bash
-eksctl create iamserviceaccount --name external-dns --namespace default --cluster CLUSTERNAME --attach-policy-arn POLICYARN
+eksctl create iamserviceaccount --name external-dns --namespace default --cluster CLUSTERNAME --attach-policy-arn POLICYARN --apṕrove
 ```
