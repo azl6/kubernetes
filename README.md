@@ -1342,4 +1342,7 @@ Nele, precisamos alterar os seguintes campos sublinhados em vermelho:
 
 ![Screenshot from 2023-03-17 02-53-14](https://user-images.githubusercontent.com/80921933/225824035-1a3479c0-9b3c-4126-a03a-6128cc322195.png)
 
+Amanhã:
+- Documentar de onde tiro esses valores
+- Conectar meu kubectl local com o cluster no EKS
 
