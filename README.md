@@ -1336,3 +1336,10 @@ O comando acima resultará no seguinte erro:
 
 Basta rodarmos o comando que ele pede, e re-rodar o comando original.
 
+Deixarei um arquivo na pasta `./external-dns`, que terá o arquivo config.yaml
+
+Nele, precisamos alterar os seguintes campos sublinhados em vermelho:
+
+![Screenshot from 2023-03-17 02-53-14](https://user-images.githubusercontent.com/80921933/225824035-1a3479c0-9b3c-4126-a03a-6128cc322195.png)
+
+
