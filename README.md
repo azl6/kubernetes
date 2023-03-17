@@ -1324,4 +1324,8 @@ Considerando que o nosso **DNS Record** no **Route 53** já está apontando para
 
 Fonte: https://eksctl.io/
 
-- Se atentar a criação de um usuário IAM com as policies necessárias pra colocá-lo no `aws configure`
+Depois de subir o cluster, criamos uma IAM Policy com permissões no R53 (Day 6, Aula 5, Minuto 5:40)
+
+```bash
+eksctl create iamserviceaccount --name external-dns --namespace default --cluster CLUSTERNAME --attach-policy-arn POLICYARN
+```
