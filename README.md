@@ -1360,13 +1360,18 @@ O comando acima resultará no seguinte erro:
 
 Basta rodarmos o comando que ele pede, e re-rodar o comando original.
 
-Deixarei um arquivo na pasta `./external-dns`, que terá o arquivo config.yaml
+Deixarei um arquivo na pasta `./external-dns`, que terá o arquivo `config.yaml` (Fonte para o arquivo: Seção "Manifest (for clusters with RBAC enabled)" do link https://github.com/kubernetes-sigs/external-dns/blob/master/docs/tutorials/aws.md)
 
 Nele, precisamos alterar os seguintes campos sublinhados em vermelho:
 
 ![Screenshot from 2023-03-17 02-53-14](https://user-images.githubusercontent.com/80921933/225824035-1a3479c0-9b3c-4126-a03a-6128cc322195.png)
 
-Amanhã:
-- Documentar de onde tiro esses valores
-- Conectar meu kubectl local com o cluster no EKS
+**Primeiro sublinhado:** Não precisamos alterar (sim, sublinhei errado!). <br>
+**Segundo sublinhado:** Nosso hosted-zone no Route 53 <br>
+**Terceiro sublinhado:** Hosted Zone ID do nosso hosted-zone, que pode ser consultado no painel do R53, ao selecionar a hosted-zone e clicar em "Edit"
 
+Com o YAML preenchido, basta applicarmos ele com `k apply -f `config.yaml`
+
+Ao rodar `k get pods`, veremos a pod que subiu do manifesto do external-dns. Se rodarmos `k logs \<POD>` e a seguinte mensagem aparecer, significa que deu tudo certo:
+
+![image](https://user-images.githubusercontent.com/80921933/226076906-50fec9ac-024d-4c40-929d-5ecc5348a194.png)
