@@ -1,3 +1,8 @@
+# Review
+
+- k top
+
+
 # Startando e stoppando o minikube
 
 O minikube é uma "VMzinha" que simula um cluster Kubernetes, sem inúmeros worker nodes para economizar recursos.
