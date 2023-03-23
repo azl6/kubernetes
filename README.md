@@ -1,7 +1,9 @@
 # Review
 
 - k top
-
+- usar flag --record no k apply
+- nslookup pra pegar dns de pod ou svc
+- pod com parametro containerport
 
 # Startando e stoppando o minikube
 
